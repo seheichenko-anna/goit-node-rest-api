@@ -17,6 +17,9 @@ const contactSchema = new Schema(
       type: Boolean,
       default: false,
     },
+    avatarUPL: {
+      type: String,
+    },
   },
   { versionKey: false, timestamps: true }
 );
