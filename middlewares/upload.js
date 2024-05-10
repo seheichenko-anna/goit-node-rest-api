@@ -1,5 +1,6 @@
 import multer from "multer";
 import path from "path";
+import HttpError from "../helpers/HttpError.js";
 
 const destination = path.resolve("temp");
 
@@ -17,7 +18,7 @@ const limits = {
 };
 
 const fileFilter = (req, file, cb) => {
-  const extention = req.file.originalname.split(".").pop();
+  const extention = file.originalname.split(".").pop();
   if (extention === "exe") {
     return cb(HttpError(400, ".exe files are not supported"));
   }

@@ -12,3 +12,7 @@ export const userSubscriptionSchema = Joi.object({
     .valid(...subscription)
     .required(),
 });
+
+export const userAvatarSchema = Joi.object({
+  avatar: Joi.string().required(),
+});
