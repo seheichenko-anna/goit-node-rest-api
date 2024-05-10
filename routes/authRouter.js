@@ -4,11 +4,7 @@ import authControllers from "../controllers/authControllers.js";
 
 import isEmptyBody from "../middlewares/isEmptyBody.js";
 
-import {
-  userAvatarSchema,
-  userSchema,
-  userSubscriptionSchema,
-} from "../schemas/authSchemas.js";
+import { userSchema, userSubscriptionSchema } from "../schemas/authSchemas.js";
 
 import validateBody from "../decorators/validateBody.js";
 import authenticate from "../middlewares/authenticate.js";
@@ -46,8 +42,6 @@ authRouter.patch(
   "/avatars",
   authenticate,
   upload.single("avatar"),
-  isEmptyBody,
-  validateBody(userAvatarSchema),
   authControllers.updateAvatar
 );
 
