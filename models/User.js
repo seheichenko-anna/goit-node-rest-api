@@ -1,5 +1,6 @@
 import { Schema, model } from "mongoose";
 import { handleSaveError, setUpdateSetting } from "./hooks.js";
+import { nanoid } from "nanoid";
 
 const userSchema = new Schema(
   {
@@ -23,6 +24,14 @@ const userSchema = new Schema(
     },
     avatarURL: {
       type: String,
+    },
+    verify: {
+      type: Boolean,
+      default: false,
+    },
+    verificationToken: {
+      type: String,
+      default: () => nanoid(),
     },
   },
   { versionKey: false, timestamps: true }

@@ -12,3 +12,7 @@ export const userSubscriptionSchema = Joi.object({
     .valid(...subscription)
     .required(),
 });
+
+export const userEmailSchema = Joi.object({
+  email: Joi.string().pattern(emailRegexp).required(),
+});

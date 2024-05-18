@@ -4,7 +4,11 @@ import authControllers from "../controllers/authControllers.js";
 
 import isEmptyBody from "../middlewares/isEmptyBody.js";
 
-import { userSchema, userSubscriptionSchema } from "../schemas/authSchemas.js";
+import {
+  userEmailSchema,
+  userSchema,
+  userSubscriptionSchema,
+} from "../schemas/authSchemas.js";
 
 import validateBody from "../decorators/validateBody.js";
 import authenticate from "../middlewares/authenticate.js";
@@ -43,6 +47,15 @@ authRouter.patch(
   authenticate,
   upload.single("avatar"),
   authControllers.updateAvatar
+);
+
+authRouter.get("/verify/:verificationToken", authControllers.verify);
+
+authRouter.post(
+  "/verify",
+  isEmptyBody,
+  validateBody(userEmailSchema),
+  authControllers.resendEmail
 );
 
 export default authRouter;
