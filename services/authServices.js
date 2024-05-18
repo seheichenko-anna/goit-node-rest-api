@@ -16,4 +16,5 @@ export const comparePassword = (password, hashPassword) =>
 export const updateSubscription = (filter, subscription) =>
   User.findOneAndUpdate(filter, subscription);
 
-export const updateUser = (filter, data) => User.findOneAndUpdate(filter, data);
+export const updateUser = (filter, data) =>
+  User.findOneAndUpdate(filter, { ...data });
